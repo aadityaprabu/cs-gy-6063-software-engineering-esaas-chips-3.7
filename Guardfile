@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 guard :rspec, cmd: 'bundle exec rspec --color' do
   watch(%r{^spec/.+_spec\.rb$}) { |m| m[0] }
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/#{m[1]}_spec.rb" }

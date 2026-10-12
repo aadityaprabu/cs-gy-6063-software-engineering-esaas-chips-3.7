@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sinatra/base'
 require 'sinatra/flash'
 require_relative 'lib/wordguesser_game'
@@ -6,7 +8,7 @@ class WordGuesserApp < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
 
-  set :host_authorization, { permitted_hosts: [] }  
+  set :host_authorization, { permitted_hosts: [] }
 
   before do
     @game = session[:game] || WordGuesserGame.new('')

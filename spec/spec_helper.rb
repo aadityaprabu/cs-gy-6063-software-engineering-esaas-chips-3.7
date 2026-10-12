@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # require 'simplecov'
 # SimpleCov.start
 
@@ -35,7 +37,7 @@ WebMock.disable_net_connect!(allow_localhost: true)
 RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.before do
-    stub_request(:post, "https://esaas-randomword-27a759b6224d.herokuapp.com/RandomWord").to_return(body: "foobar")
+    stub_request(:post, 'https://esaas-randomword-27a759b6224d.herokuapp.com/RandomWord').to_return(body: 'foobar')
   end
   config.color = true
   config.filter_run_excluding pending: true # this avoids excessive pending examples output

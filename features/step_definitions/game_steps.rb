@@ -1,29 +1,31 @@
+# frozen_string_literal: true
+
 require 'uri'
 require 'cgi'
-require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'support', 'paths'))
 
 def filtered_page(selector)
   selector ? page.find(selector) : page
 end
 
 When(/^I start a new game with word "(.*)"$/) do |word|
-  stub_request(:post, "https://esaas-randomword-27a759b6224d.herokuapp.com/RandomWord")
+  stub_request(:post, 'https://esaas-randomword-27a759b6224d.herokuapp.com/RandomWord')
     .to_return(status: 200, headers: {}, body: word)
   visit '/new'
-  click_button "New Game"
+  click_button 'New Game'
 end
 
 When(/^I guess "(.*)"(?: again)?$/) do |letter|
   letter.downcase!
-  fill_in("guess", with: letter)
-  click_button("Guess!")
+  fill_in('guess', with: letter)
+  click_button('Guess!')
 end
 
 When(/^I make the following guesses:(.*)$/) do |guesses|
   guesses = guesses.gsub(' ', '').split(',')
   guesses.each do |letter|
-    fill_in("guess", with: letter)
-    click_button("Guess!")
+    fill_in('guess', with: letter)
+    click_button('Guess!')
   end
 end
 
@@ -49,8 +51,8 @@ end
 When(/^I guess "(.*)" (.*) times in a row$/) do |letter, num|
   letter.downcase!
   num.to_i.times do
-    fill_in("guess", with: letter)
-    click_button("Guess!")
+    fill_in('guess', with: letter)
+    click_button('Guess!')
   end
 end
 
@@ -67,10 +69,10 @@ Then(/^(?:|I )should be on (.+)$/) do |page_name|
   expect(current_path).to eql(path_to(page_name))
 end
 
-Then(/^(?:|I )should see "([^\"]*)"(?: within "([^\"]*)")?$/) do |text, selector|
+Then(/^(?:|I )should see "([^"]*)"(?: within "([^"]*)")?$/) do |text, selector|
   expect(filtered_page(selector)).to have_text(text)
 end
 
-When(/^(?:|I )press "([^\"]*)"(?: within "([^\"]*)")?$/) do |button, selector|
+When(/^(?:|I )press "([^"]*)"(?: within "([^"]*)")?$/) do |button, selector|
   filtered_page(selector).click_button(button)
 end

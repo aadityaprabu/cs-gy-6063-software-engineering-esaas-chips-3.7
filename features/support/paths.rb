@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Taken from the cucumber-rails project.
 
 module NavigationHelpers
