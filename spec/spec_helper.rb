@@ -10,7 +10,7 @@ require 'rack/test'
 require 'webmock/rspec'
 require 'byebug'
 
-# setup test environment
+# setup test environment,
 set :environment, :test
 set :run, false
 set :raise_errors, true
