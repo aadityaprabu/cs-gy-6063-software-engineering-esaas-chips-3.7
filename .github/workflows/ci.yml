@@ -15,3 +15,13 @@ jobs:
         with:
           bundler-cache: true # reads .ruby-version, runs bundle install, caches gems
       - run: bundle exec rspec
+
+  cucumber:
+    name: Cucumber
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bundle exec cucumber --format progress

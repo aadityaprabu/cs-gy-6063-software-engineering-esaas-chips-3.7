@@ -4,3 +4,4 @@ TAGS
 *.swp
 .idea/
 .vscode/
+coverage/
