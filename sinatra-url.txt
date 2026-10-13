@@ -1,1 +1,1 @@
-https://esaas-chips-a2fcabdb1b82.herokuapp.com/new
+https://esaas-chips-a2fcabdb1b82.herokuapp.com
